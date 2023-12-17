@@ -2,9 +2,35 @@
 #include <string>
 #include <vector>
 
+enum class OrderBookType{bid,ask};
+
+class OrderBookEntry{
+    public:
+
+    OrderBookEntry( double _price,
+                    double _aount,
+                    std::string _tiemstamp,
+                    std::string _product,
+                    OrderBookType _orderType)
+    {
+        price = _price;
+        tiemstamp = _tiemstamp;
+        product = _product;
+
+    }
+
+    double price;
+    double aount;
+    std::string tiemstamp;
+    std::string product;
+    OrderBookType orderType;
+
+};
+
 int main()
 {
-    enum class OrderBookType{bid,ask};
+    
+    OrderBookEntry order1{10000,0.02,"202/03/17","BCD/USFT",OrderBookType::bid};
 
     std::vector<double> prices;
     std::vector<double> amount;
