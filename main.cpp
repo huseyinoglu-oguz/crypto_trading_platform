@@ -8,20 +8,24 @@ class OrderBookEntry{
     public:
 
     OrderBookEntry( double _price,
-                    double _aount,
+                    double _amount,
                     std::string _tiemstamp,
                     std::string _product,
                     OrderBookType _orderType)
+    
+    : price(_price),
+      amount(_amount),
+      timestamp(_tiemstamp),
+      product(_product),
+      orderType(_orderType)
+
     {
-        price = _price;
-        tiemstamp = _tiemstamp;
-        product = _product;
 
     }
 
     double price;
-    double aount;
-    std::string tiemstamp;
+    double amount;
+    std::string timestamp;
     std::string product;
     OrderBookType orderType;
 
@@ -29,20 +33,21 @@ class OrderBookEntry{
 
 int main()
 {
-    
-    OrderBookEntry order1{10000,0.02,"202/03/17","BCD/USFT",OrderBookType::bid};
+    std::vector<OrderBookEntry> entries;
 
-    std::vector<double> prices;
-    std::vector<double> amount;
-    std::vector<std::string> timestamps;
-    std::vector<std::string> products;
-    std::vector<OrderBookType> orderTypes;
+    entries.push_back(
+      {10000,0.02,"202/03/17","BCD/USFT",OrderBookType::bid}
+    );
+    entries.push_back(
+      {20000,0.03,"202/03/17","BCD/USFT",OrderBookType::ask}
+    );
 
-    prices.push_back(5000.01);
 
-    unsigned short i = 65536;
-    std::cout<< i<<std::endl;
-    
+    for(OrderBookEntry& e : entries)
+    {
+      std::cout << e.price << std::endl;
+    }
+
 
 
     return 0;
